@@ -3,10 +3,11 @@ import React from 'react';
 function Nav() {
   const navItems = [
     { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
     { name: 'Menu', href: '/menu' },
     { name: 'Reservations', href: '/reservations' },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Order Online', href: '/order-online' },
+    { name: 'Login', href: '/login' },
   ];
 
   return (
