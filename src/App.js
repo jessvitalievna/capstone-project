@@ -9,9 +9,9 @@ function App() {
     <div className="app-container">
       <Header />
       <Nav />
-      <main className="main-content">
-        <Main>…</Main>
-      </main>
+      <div className="main-content">
+        <Main />
+      </div>
       <Footer />
     </div>
   );

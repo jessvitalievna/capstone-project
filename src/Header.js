@@ -1,4 +1,6 @@
 import React from 'react';
+import Nav from './Nav';
+import './Header.css';
 
 function Header () {
   return (
@@ -8,7 +10,8 @@ function Header () {
         alt="Little Lemon logo"
         className="logo"
       />
-      </header>
+      <Nav />
+    </header>
   );
 }
 
