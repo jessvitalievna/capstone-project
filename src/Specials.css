@@ -12,7 +12,6 @@
 
 .specials-header h2 {
   margin: 0;
-  font-size: 3rem;
   line-height: 1;
 }
 
@@ -49,12 +48,8 @@
     gap: 2rem;
   }
 
-  .specials-header h2 {
-    font-size: 2rem;
-  }
-
   .btn-primary {
-    width: 50%;
+    width: 60%;
     text-align: center;
   }
 }

@@ -19,14 +19,17 @@ function Testimonials() {
 
   return (
     <section className="testimonials-section">
-      <h2>What Our Customers Say</h2>
-      <div className="testimonials-grid">
-        {reviews.map((review, index) => (
-          <div className="testimonial-card" key={index}>
-            <p className="testimonial-text">“{review.text}”</p>
-            <p className="testimonial-name">– {review.name}</p>
-          </div>
-        ))}
+      <div className="container">
+        <h2>What Our Customers Say</h2>
+        <div className="testimonials-grid">
+          {reviews.map((review, index) => (
+            <div className="testimonial-card" key={index}>
+              <div className="testimonial-stars">★★★★★</div>
+              <p className="testimonial-text">“{review.text}”</p>
+              <p className="testimonial-name">– {review.name}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

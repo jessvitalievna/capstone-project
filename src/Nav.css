@@ -15,7 +15,6 @@
 /* Link styling */
 .nav-list a {
   text-decoration: none;
-  text-transform: uppercase;
   color: #333333;
   font-weight: 500;
   transition: color 0.2s ease-in-out;

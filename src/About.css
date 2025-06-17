@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   gap: 2rem;
   padding: 3rem 2rem;
+  margin-bottom: 2rem;
   background-color: #fefefe;
   align-items: center;
 }
@@ -13,7 +14,6 @@
 }
 
 .about-text h2 {
-  font-size: 2rem;
   margin-bottom: 1rem;
 }
 
@@ -24,13 +24,64 @@
 }
 
 .about-image {
+  position: relative;
   flex: 1;
   min-width: 300px;
-  text-align: center;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.about-image img {
-  max-width: 100%;
+.owners-img,
+.restaurant-img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.restaurant-img {
+  position: absolute;
+  top: 80px;
+  left: 80px;
+  z-index: 2;
+}
+
+.owners-img {
+  z-index: 1;
+}
+
+.restaurant-img {
+  width: 80%;
+  border-radius: 8px;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 0;
+}
+
+@media (max-width: 700px) {
+  .about-image {
+    flex-direction: column;
+    align-items: center;
+    position: static;
+  }
+
+  .owners-img,
+  .restaurant-img {
+    position: static;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+}
+
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
 }
