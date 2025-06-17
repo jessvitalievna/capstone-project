@@ -1,12 +1,39 @@
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+  padding: 4rem 2rem;
+  background-color: #495e57;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  gap: 2rem;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 600px;
+}
+
 .hero-text h1 {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
+  font-size: 4rem;
+  line-height: 1;
+  color:#f4ce14;
+  margin-bottom: 0;
 }
 
 .hero-text h2 {
-  color: #555;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  line-height: 0.75;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
 }
 
 .hero-text p {
@@ -15,23 +42,68 @@
   margin-bottom: 1.5rem;
 }
 
-.hero-text button {
+.btn-primary {
   background-color: #f4ce14;
   color: #000;
   padding: 0.75rem 1.5rem;
   font-weight: bold;
   border: none;
   border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #ddb913;
 }
 
 .hero-image {
   flex: 1;
-  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-width: 300px;
 }
 
 .hero-image img {
-  max-width: 100%;
-  height: auto;
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
   border-radius: 8px;
+  position: static;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 2rem 1rem;
+  }
+
+.hero-content { /* you can remove flex-layout */
+  display: block;
+}
+
+.hero-text {
+  width: 100%;
+  }
+
+.hero-image {
+  display: none;
+  }
+
+.hero-text h1 {
+  margin-top: 0;
+  }
+
+.hero-text p {
+  margin: 1rem 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  }
+
+.hero-text button {
+  width: 100%;
+  padding: 1rem;
+  }
 }

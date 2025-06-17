@@ -1,26 +1,16 @@
 import React from 'react';
 import './Nav.css';
 
-function Nav() {
-  const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Menu', href: '/menu' },
-    { name: 'Reservations', href: '/reservations' },
-    { name: 'Order Online', href: '/order-online' },
-    { name: 'Login', href: '/login' },
-  ];
-
+function Nav({ className = '' }) {
   return (
-    <nav aria-label="Main navigation">
-      <ul className="nav-list" role="menubar">
-        {navItems.map((item) => (
-          <li key={item.href} role="none">
-            <a href={item.href} role="menuitem">
-              {item.name}
-            </a>
-          </li>
-        ))}
+    <nav className="main-nav" aria-label="Main navigation">
+      <ul className={`nav-list ${className}`.trim()} role="menubar">
+        <li role="none"><a role="menuitem" href="/">Home</a></li>
+        <li role="none"><a role="menuitem" href="/about">About</a></li>
+        <li role="none"><a role="menuitem" href="/menu">Menu</a></li>
+        <li role="none"><a role="menuitem" href="/reservations">Reservations</a></li>
+        <li role="none"><a role="menuitem" href="/order">Order&nbsp;Online</a></li>
+        <li role="none"><a role="menuitem" href="/login">Login</a></li>
       </ul>
     </nav>
   );

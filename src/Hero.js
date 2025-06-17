@@ -5,14 +5,18 @@ import heroImage from './assets/hero-img.png';
 function Hero() {
   return (
     <section className="hero-section">
-      <div className="hero-text">
-        <h1>Little Lemon</h1>
-        <h2>Chicago</h2>
-        <p>We serve traditional Mediterranean dishes with a modern twist.</p>
-        <button>Reserve a Table</button>
-      </div>
-      <div className="hero-image">
-        <img src={heroImage} alt="Delicious Mediterranean dish" />
+      <div className="container">
+        <div className="hero-content">
+          <div className="hero-text">
+            <h1>Little Lemon</h1>
+            <h2>Chicago</h2>
+            <p>We serve traditional Mediterranean dishes with a modern twist.</p>
+            <button className='btn-primary'>Reserve a Table</button>
+          </div>
+          <div className="hero-image">
+            <img src={heroImage} alt="Delicious Mediterranean dish" />
+          </div>
+        </div>
       </div>
     </section>
   );

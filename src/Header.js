@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Nav from './Nav';
+import logo from './assets/little-lemon-logo.jpg';
 import './Header.css';
 
-function Header () {
+function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
   return (
     <header className="site-header">
-      <img
-        src="/assets/little-lemon-logo.jpg"
-        alt="Little Lemon logo"
-        className="logo"
-      />
-      <Nav />
+      <div className="container">
+        <div className="logo-container">
+          <img src={logo} alt="Little Lemon logo" className="logo" />
+          <button className="hamburger-btn" onClick={toggleMenu}>
+            ☰
+          </button>
+        </div>
+        {/* Nav is always mounted; visibility controlled via CSS class */}
+        <Nav className={menuOpen ? 'show' : ''} />
+      </div>
     </header>
   );
 }
