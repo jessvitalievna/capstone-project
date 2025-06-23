@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
 import Nav from './Nav';
 import logo from './assets/little-lemon-logo.jpg';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 function Header() {
@@ -11,7 +12,9 @@ function Header() {
     <header className="site-header">
       <div className="container">
         <div className="logo-container">
+          <Link to="/">
           <img src={logo} alt="Little Lemon logo" className="logo" />
+          </Link>
           <button className="hamburger-btn" onClick={toggleMenu}>
             ☰
           </button>

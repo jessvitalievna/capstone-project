@@ -1,0 +1,11 @@
+
+.booking-page {
+  flex: 1;
+  padding: 3rem 2rem;
+  background: #ffffff;
+}
+.booking-page h1 {
+  font-family: 'Markazi Text', serif;
+  text-align: center;
+  color: #495e57;
+}
