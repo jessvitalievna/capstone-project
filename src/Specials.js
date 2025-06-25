@@ -20,7 +20,7 @@ function Specials() {
               <h3>Greek Salad <span className="price">$12.99</span></h3>
               <p>Fresh lettuce, olives, feta, and crisp cucumbers with lemon dressing.</p>
               <p className="order">
-                <a href="/order" className="order-link">
+                <a href="/" className="order-link">
                   Order a delivery <img src={ordericon} alt='delivery-icon' className='order-icon'/></a>
               </p>
             </div>
@@ -31,7 +31,7 @@ function Specials() {
               <h3>Bruschetta <span className="price">$5.99</span></h3>
               <p>Toasted bread topped with fresh tomatoes, garlic, and basil.</p>
               <p className="order">
-                <a href="/order" className="order-link">
+                <a href="/" className="order-link">
                   Order a delivery <img src={ordericon} alt='delivery-icon' className='order-icon'/></a>
               </p>
             </div>
@@ -42,7 +42,7 @@ function Specials() {
               <h3>Lemon Dessert <span className="price">$7.99</span></h3>
               <p>Sweet and tart lemon dessert made with authentic ingredients.</p>
               <p className="order">
-                <a href="/order" className="order-link">
+                <a href="/" className="order-link">
                   Order a delivery <img src={ordericon} alt='delivery-icon' className='order-icon'/></a>
               </p>
             </div>

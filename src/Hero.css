@@ -1,4 +1,4 @@
-/*  */.hero-section {
+.hero-section {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
@@ -49,6 +49,7 @@
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
+  width: fit-content;
 }
 
 .btn-primary:hover {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './BookingForm.css';
 
-function BookingForm({ onSubmit, availableTimes, dispatch }) {
+function BookingForm({ onSubmit, availableTimes, dispatchDate }) {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [guests, setGuests] = useState(1);
@@ -10,11 +10,11 @@ function BookingForm({ onSubmit, availableTimes, dispatch }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ date, time, guests, occasion });
+    onSubmit({ date, time, guests, occasion });
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'grid', maxWidth: 200, gap: 20 }}>
+    <form onSubmit={handleSubmit} className="booking-form">
       <label htmlFor="res-date">Choose date</label>
       <input
         type="date"
@@ -23,7 +23,7 @@ function BookingForm({ onSubmit, availableTimes, dispatch }) {
         onChange={(e) => {
           const selectedDate = e.target.value;
           setDate(selectedDate);
-          dispatch(selectedDate);
+          dispatchDate(selectedDate);
         }}
       />
 
@@ -64,7 +64,7 @@ function BookingForm({ onSubmit, availableTimes, dispatch }) {
         ))}
       </select>
 
-      <button type="submit">Submit reservation</button>
+      <button type="submit" className='btn-primary'>Submit reservation</button>
     </form>
   );
 }

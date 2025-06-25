@@ -7,33 +7,43 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   width: 100%;
+  max-width: 380px;
+  margin: auto auto 1rem;
+  box-sizing: border-box;
 }
 
 .booking-form input,
-.booking-form select,
-.booking-form button {
+.booking-form select {
   width: 100%;
   padding: 0.75rem;
   font-size: 1rem;
+  border-radius: 16px;
+  border: 2px solid rgba(73, 94, 87, 0.4); /* lighter variant of #495e57 */
+  box-sizing: border-box;
+}
+
+.booking-form input:focus,
+.booking-form select:focus {
+  outline: none;
+  border-color: #F4CE14;
+  box-shadow: 0 0 0 2px rgba(73, 94, 87, 0.3);
+}
+
+.booking-form > label {
+  padding-top: 1rem;
 }
 
 .booking-form button {
-  background-color: #ee9972;
-  color: #fff;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  transition: background-color 0.2s;
+  display: block;
+  margin: 0.5rem auto;
+  width: auto;
+  padding: 0.75rem 1.5rem;
 }
 
-.booking-form button:hover {
-  background-color: #eb8a62;
-}
 
-/* Larger spacing on desktop */
-@media (min-width: 768px) {
+
+@media (max-width: 480px) {
   .booking-form {
-    gap: 1.5rem;
-    padding: 2rem;
+    margin: 0 1rem;
   }
 }
