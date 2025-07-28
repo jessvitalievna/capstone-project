@@ -64,7 +64,7 @@ function BookingPage() {
   const submitForm = async (formData) => {
     try {
       const success = await window.submitAPI(formData);
-      if (success) navigate('/confirmed', { state: { formData } });
+      if (success) navigate('/confirmed', { state: { bookingData: [formData] } });
     } catch (e) {
       console.error(e);
     }
