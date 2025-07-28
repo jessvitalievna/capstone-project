@@ -47,3 +47,26 @@
     margin: 0 1rem;
   }
 }
+
+input:invalid,
+select:invalid {
+  border: 2px solid red;
+}
+
+input:required:valid,
+select:required:valid {
+  border: 2px solid green;
+}
+
+.booking-form button:disabled {
+  color: #5f5f5f;
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+}
