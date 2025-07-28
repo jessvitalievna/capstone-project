@@ -34,7 +34,6 @@ describe('BookingPage – Local Storage behavior', () => {
 
     userEvent.click(screen.getByRole('button', { name: /Submit reservation/i }));
 
-    
     expect(localStorage.setItem).toHaveBeenCalledWith(
       'bookingData',
       expect.stringContaining('"date":"2025-06-30"')

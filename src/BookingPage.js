@@ -1,5 +1,4 @@
 import React, { useReducer, useEffect, useState } from 'react';
-import { fetchData, submitAPI } from './api';
 import { useNavigate } from 'react-router-dom';
 import BookingForm from './BookingForm';
 import './BookingPage.css';
@@ -17,69 +16,58 @@ export function updateTimes(state, action) {
 
 function BookingPage() {
   const navigate = useNavigate();
-
-  const [availableTimes, dispatch] = useReducer(
-    updateTimes,
-    initializeTimes()
-  );
-
-  const [bookingData, setBookingData] = useState(() => {
-    const stored = window.localStorage.getItem('bookingData');
-    return stored ? JSON.parse(stored) : [];
-  });
-
+  const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // INITIAL LOAD: grab today's times once fetchData is available
   useEffect(() => {
-    window.localStorage.setItem('bookingData', JSON.stringify(bookingData));
-  }, [bookingData]);
+    const today = new Date().toISOString().split('T')[0];
+    let mounted = true;
 
-  const submitForm = async (formData) => {
-    const last = bookingData[bookingData.length - 1];
-    if (last?.date === formData.date && last?.time === formData.time) {
-      alert('You already booked this date and time.');
-      return;
-    }
-
-    try {
-      const success = await submitAPI(formData);
-      if (success) {
-        setBookingData((prev) => [...prev, formData]);
-        navigate('/confirmed', {
-          state: { bookingData: [...bookingData, formData] },
-        });
-      } else {
-        console.error('Submission failed');
+    async function loadTimes(date) {
+      try {
+        const times = await window.fetchData(date);
+        if (!mounted) return;
+        if (!Array.isArray(times)) throw new Error('Bad response');
+        dispatch({ type: 'UPDATE_TIMES', payload: times });
+      } catch {
+        if (!mounted) return;
+        setError('Failed to load times');
+      } finally {
+        if (mounted) setLoading(false);
       }
-    } catch (err) {
-      console.error('Error submitting form:', err);
     }
-  };
 
-  useEffect(() => {
-    const todayStr = new Date().toISOString().split('T')[0];
+    loadTimes(today);
+    return () => { mounted = false; };
+  }, []);
 
+  // DATE CHANGE: fetch new times for selected date
+  const handleDateChange = (newDate) => {
     setLoading(true);
     setError(null);
 
-    fetchData(todayStr)
-      .then((times) => {
+    (async () => {
+      try {
+        const times = await window.fetchData(newDate);
+        if (!Array.isArray(times)) throw new Error('Bad response');
         dispatch({ type: 'UPDATE_TIMES', payload: times });
-      })
-      .catch((err) => {
-        console.error(err);
-        setError('Failed to load available times');
-      })
-      .finally(() => {
+      } catch {
+        setError('Failed to load times');
+      } finally {
         setLoading(false);
-      });
-  }, []);
+      }
+    })();
+  };
 
-  const handleDateChange = (newDate) => {
-    fetchData(newDate)
-      .then((times) => dispatch({ type: 'UPDATE_TIMES', payload: times }))
-      .catch(console.error);
+  const submitForm = async (formData) => {
+    try {
+      const success = await window.submitAPI(formData);
+      if (success) navigate('/confirmed', { state: { formData } });
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   if (loading) return <p>Loading available times…</p>;
@@ -94,20 +82,6 @@ function BookingPage() {
           dispatchDate={handleDateChange}
           onSubmit={submitForm}
         />
-
-        {bookingData.length > 0 && (
-          <section className="booking-history">
-            <h2>Your Bookings</h2>
-            <ul>
-              {bookingData.map((b, i) => (
-                <li key={i}>
-                  {b.date} at {b.time}, {b.guests} guest
-                  {b.guests > 1 ? 's' : ''} — {b.occasion}
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
       </div>
     </main>
   );
