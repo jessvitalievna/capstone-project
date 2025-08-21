@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './BookingForm.css';
 
-function BookingForm({ onSubmit, availableTimes, dispatchDate }) {
+function BookingForm({ onSubmit, availableTimes }) {
   const [date, setDate] = useState('');
   const [guests, setGuests] = useState();
   const occasions = ['Birthday', 'Anniversary', 'Wedding', 'Business Meeting', 'Other'];
@@ -132,11 +132,11 @@ const handleSubmit = (e) => {
         max="10"
         value={guests}
         onChange={(e) => setGuests(Number(e.target.value))}
-        onBlur={() => setTouched((prev) => ({ ...prev, number: true }))}
+        onBlur={() => setTouched((prev) => ({ ...prev, guests: true }))}
         required
       />
 
-      {touched.date && errors.guests && (
+      {touched.guests && errors.guests && (
         <div className="error-message">{errors.guests}</div>
       )}
 

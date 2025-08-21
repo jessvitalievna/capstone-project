@@ -15,8 +15,13 @@ function Header() {
           <Link to="/">
           <img src={logo} alt="Little Lemon logo" className="logo" />
           </Link>
-          <button className="hamburger-btn" onClick={toggleMenu}>
-            ☰
+          <button
+            className="hamburger-btn"
+            onClick={toggleMenu}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+          >
+            <span aria-hidden="true">☰</span>
           </button>
         </div>
         {/* Nav is always mounted; visibility controlled via CSS class */}
