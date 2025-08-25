@@ -7,11 +7,11 @@ import ordericon from './assets/order-icon.svg';
 
 function Specials() {
   return (
-    <section className="specials-section">
+    <section className="specials-section" aria-label="This week’s specials">
       <div className="container">
         <div className="specials-header">
           <h2>This Week‘s Specials!</h2>
-          <button className='btn-primary'>Online Menu</button>
+          <button className="btn-primary" aria-label="View the full online menu">Online Menu</button>
         </div>
         <div className="specials-grid">
           <div className="card">
@@ -20,8 +20,9 @@ function Specials() {
               <h3>Greek Salad <span className="price">$12.99</span></h3>
               <p>Fresh lettuce, olives, feta, and crisp cucumbers with lemon dressing.</p>
               <p className="order">
-                <a href="/" className="order-link">
-                  Order a delivery <img src={ordericon} alt='delivery-icon' className='order-icon'/></a>
+                <a href="/" className="order-link" aria-label="Order a Greek Salad delivery">
+                  Order a delivery <img src={ordericon} alt="" aria-hidden="true" className="order-icon" />
+                </a>
               </p>
             </div>
           </div>
@@ -31,8 +32,9 @@ function Specials() {
               <h3>Bruschetta <span className="price">$5.99</span></h3>
               <p>Toasted bread topped with fresh tomatoes, garlic, and basil.</p>
               <p className="order">
-                <a href="/" className="order-link">
-                  Order a delivery <img src={ordericon} alt='delivery-icon' className='order-icon'/></a>
+                <a href="/" className="order-link" aria-label="Order a bruschetta delivery">
+                  Order a delivery <img src={ordericon} alt="" aria-hidden="true" className="order-icon" />
+                </a>
               </p>
             </div>
           </div>
@@ -42,8 +44,9 @@ function Specials() {
               <h3>Lemon Dessert <span className="price">$7.99</span></h3>
               <p>Sweet and tart lemon dessert made with authentic ingredients.</p>
               <p className="order">
-                <a href="/" className="order-link">
-                  Order a delivery <img src={ordericon} alt='delivery-icon' className='order-icon'/></a>
+                <a href="/" className="order-link" aria-label="Order a lemon dessert delivery">
+                Order a delivery <img src={ordericon} alt="" aria-hidden="true" className="order-icon" />
+              </a>
               </p>
             </div>
           </div>

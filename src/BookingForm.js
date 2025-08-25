@@ -81,48 +81,53 @@ const handleSubmit = (e) => {
 };
 
   return (
-    <form onSubmit={handleSubmit} className="booking-form">
+    <form aria-describedby="form-help" onSubmit={handleSubmit} className="booking-form">
+      <p id="form-help">All fields marked * are required.</p>
       <label htmlFor="res-date">Choose date</label>
-      <input
+     <input
         type="date"
         name="date"
         id="res-date"
         value={date}
         onChange={(e) => setDate(e.target.value)}
-        onBlur={() => setTouched((prev) => ({ ...prev, date: true }))}
+        onBlur={() => setTouched((p) => ({ ...p, date: true }))}
         onInvalid={e => e.target.setCustomValidity('Please choose a valid booking date')}
         onInput={e => e.target.setCustomValidity('')}
         required
-        min={new Date().toISOString().split('T')[0]}
-        max="2025-12-31"
+        min={todayStr}
+        max={maxDateStr}
+        aria-invalid={touched.date && !!errors.date}
+        aria-describedby="res-date-hint res-date-err"
       />
+      <small id="res-date-hint">Pick a future date (until {maxDateStr}).</small>
       {touched.date && errors.date && (
-        <div className="error-message">{errors.date}</div>
+        <p id="res-date-err" role="alert" className="error-message">{errors.date}</p>
       )}
 
       <label htmlFor="res-time">Choose time</label>
+      <div aria-live="polite">
       <input
         type="time"
         id="res-time"
         value={time}
         onChange={(e) => setTime(e.target.value)}
-        onBlur={() => {
-          if (time) setTime(normalizeTime(time));
-        }}
+        onBlur={() => { if (time) setTime(normalizeTime(time)); }}
         list="time-options"
         min="10:00"
         max="22:00"
+        step="1800"
         required
+        aria-invalid={touched.time && !!errors.time}
+        aria-describedby="res-time-hint res-time-err"
       />
-      {touched.time && errors.time && (
-        <div className="error-message">{errors.time}</div>
-      )}
-
-      <datalist id="time-options">
-        {availableTimes.map((t) => (
-          <option key={t} value={t} />
-        ))}
-      </datalist>
+    </div>
+    <small id="res-time-hint">Available slots, every 30 minutes (10:00–22:00).</small>
+    {touched.time && errors.time && (
+      <p id="res-time-err" role="alert" className="error-message">{errors.time}</p>
+    )}
+    <datalist id="time-options">
+      {availableTimes.map((t) => <option key={t} value={t} />)}
+    </datalist>
 
       <label htmlFor="guests">Number of guests</label>
       <input
@@ -132,12 +137,14 @@ const handleSubmit = (e) => {
         max="10"
         value={guests}
         onChange={(e) => setGuests(Number(e.target.value))}
-        onBlur={() => setTouched((prev) => ({ ...prev, guests: true }))}
+        onBlur={() => setTouched((p) => ({ ...p, guests: true }))}
         required
+        aria-invalid={touched.guests && !!errors.guests}
+        aria-describedby="guests-hint guests-err"
       />
-
+      <small id="guests-hint">Between 1 and 10 guests.</small>
       {touched.guests && errors.guests && (
-        <div className="error-message">{errors.guests}</div>
+        <p id="guests-err" role="alert" className="error-message">{errors.guests}</p>
       )}
 
       <label htmlFor="occasion">Occasion</label>
